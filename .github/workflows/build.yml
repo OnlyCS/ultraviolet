@@ -29,15 +29,12 @@ jobs:
         run: pnpm build
 
       - name: Clone scripts
-        uses: actions/checkout@v3
-        with:
-          repository: inertia-unblocker/ultraviolet
-          path: uv-scripts
-          token: ${{ secrets.GH_TOKEN }}
+        run: git clone https://github.com/inertia-unblocker/ultraviolet uv-scripts
 
       - name: Switch to scripts branch
         run: |
           cd uv-scripts
+          git pull
           git switch scripts
           cd ..
 
