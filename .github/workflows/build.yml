@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: inertia-unblocker/ultraviolet
-          path: scripts
+          path: uv-scripts
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Switch to scripts branch
