@@ -1,0 +1,62 @@
+name: Build and Push Ultraviolet
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3.4.1
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install deps
+        run: pnpm i
+
+      - name: Build UV
+        run: pnpm build
+
+      - name: Clone scripts
+        uses: actions/checkout@v3
+        with:
+          repository: inertia-unblocker/ultraviolet
+          path: scripts
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Switch to scripts branch
+        run: |
+          cd uv-scripts
+          git switch scripts
+          cd ..
+
+      - name: Move files
+        run: mv dist/uv.{bundle,client,handler,config,sw}.js uv-scripts
+
+      - name: Commit files
+        run: |
+          cd uv-scripts
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "build" -a
+          cd ..
+
+      - name: Push repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          repository: inertia-unblocker/ultraviolet
+          directory: uv-scripts
+          branch: scripts
