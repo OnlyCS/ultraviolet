@@ -3,8 +3,6 @@ name: Build and Push Ultraviolet
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -39,7 +37,10 @@ jobs:
           cd ..
 
       - name: Move files
-        run: mv dist/uv.{bundle,client,handler,config,sw}.js uv-scripts
+        run: |
+          rm dist/uv.config.js
+          mv dist/* uv-scripts
+          mv uv.d.ts uv-scripts
 
       - name: Commit files
         run: |
