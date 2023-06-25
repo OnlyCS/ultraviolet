@@ -1,3 +1,16 @@
+# v2.0.0
+
+-   This version of Ultraviolet has support for Bare server v3
+-   Support for older Bare servers was dropped.
+
+# v1.0.10
+
+-   This version of Ultraviolet fixes an NPM versioning error.
+
+# v1.0.8
+
+-   This version of Ultraviolet improves error messages.
+
 # v1.0.7
 
 -   This version of Ultraviolet correctly sets the `cache` option when making a request.

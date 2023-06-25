@@ -1,6 +1,6 @@
 {
     "name": "@titaniumnetwork-dev/ultraviolet",
-    "version": "1.0.7",
+    "version": "2.0.0",
     "description": "Highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers and more!",
     "main": "lib/index.cjs",
     "license": "MIT",
@@ -10,7 +10,9 @@
     },
     "files": [
         "dist",
-        "lib"
+        "lib",
+        "uv.d.ts",
+        "client.d.ts"
     ],
     "type": "module",
     "scripts": {
@@ -19,7 +21,7 @@
         "watch": "cross-env NODE_ENV=development webpack-cli --watch"
     },
     "dependencies": {
-        "@tomphttp/bare-client": "^1.1.2-beta.3",
+        "@tomphttp/bare-client": "^2.0.0-beta.2",
         "css-tree": "^2.0.4",
         "esotope-hammerhead": "^0.6.1",
         "events": "^3.3.0",
