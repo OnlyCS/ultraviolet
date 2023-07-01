@@ -1,7 +1,7 @@
 /*global Ultraviolet*/
-self.__uv$config = {
+const ultraviolet_config = {
 	prefix: '/ultraviolet/service/',
-	bare: 'https://bare.backends.onlycs.net/',
+	bare: 'https://uvbare.onlycs.net/',
 	encodeUrl: Ultraviolet.codec.xor.encode,
 	decodeUrl: Ultraviolet.codec.xor.decode,
 	handler: '/ultraviolet/uv.handler.js',
@@ -9,4 +9,6 @@ self.__uv$config = {
 	bundle: '/ultraviolet/uv.bundle.js',
 	config: '/ultraviolet/uv.config.js',
 	sw: '/ultraviolet/uv.sw.js',
-};
+}
+
+self.__uv$config = ultraviolet_config;
