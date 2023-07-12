@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Ultraviolet Launcher</title>
+
+	<script src="/ultraviolet/uv.bundle.js"></script>
+	<script src="/ultraviolet/uv.config.js"></script>
+	<script src="/ultraviolet/uv.helpers.js"></script>
+	<script>
+		window.addEventListener('load', async () => {
+			await register_uv();
+
+			// check for url query param
+			const url = new URLSearchParams(window.location.search).get('url') || 'https://google.com/';
+			await start_uv(url);
+		})
+	</script>
+</head>
+
+</html>
