@@ -9,12 +9,16 @@
 	<script src="/ultraviolet/uv.config.js"></script>
 	<script src="/ultraviolet/uv.helpers.js"></script>
 	<script>
-		window.addEventListener('load', async () => {
-			await register_uv();
-
-			// check for url query param
+		window.addEventListener('load', () => {
 			const url = new URLSearchParams(window.location.search).get('url') || 'https://google.com/';
-			await start_uv(url);
+
+			try {
+				register_uv().then(() => {
+					start_uv(url);
+				});
+			} catch (err) {
+				alert(err.message);
+			}
 		})
 	</script>
 </head>
