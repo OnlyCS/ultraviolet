@@ -11,7 +11,11 @@ function register_uv() {
 		throw new Error("Your browser does not support service workers");
 	}
 
-	return navigator.serviceWorker.register(swpath, { scope: __uv$config.prefix });
+	return new Promise((resolve, reject) => {
+		navigator.serviceWorker.register(swpath, { scope: __uv$config.prefix })
+			.then(resolve)
+			.catch(reject);
+	});
 }
 
 function start_uv(url) {
