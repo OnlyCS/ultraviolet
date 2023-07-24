@@ -1,7 +1,7 @@
 /*global Ultraviolet*/
 const ultraviolet_config = {
 	prefix: '/ultraviolet/service/',
-	bare: 'https://uvbare.onlycs.net/',
+	bare: 'https://uv.holyubofficial.net/bare1/',
 	encodeUrl: Ultraviolet.codec.xor.encode,
 	decodeUrl: Ultraviolet.codec.xor.decode,
 	handler: '/ultraviolet/uv.handler.js',
